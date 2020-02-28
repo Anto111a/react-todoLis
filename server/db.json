@@ -1,0 +1,7 @@
+{
+    "posts": [
+      { "id": 1, "title": "Учи React"},
+      { "id": 2, "title": "Учи English"},
+      { "id": 3, "title": "Попей пива"}
+    ]
+  }
