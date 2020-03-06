@@ -1,7 +1,24 @@
 {
-    "posts": [
-      { "id": 1, "title": "Учи React"},
-      { "id": 2, "title": "Учи English"},
-      { "id": 3, "title": "Попей пива"}
-    ]
-  }
+  "posts": [
+    {
+      "title": "sdds",
+      "id": 6
+    },
+    {
+      "title": "lkmk",
+      "id": 7
+    },
+    {
+      "title": ";lm;l;l",
+      "id": 8
+    },
+    {
+      "title": "dddddd",
+      "id": 9
+    },
+    {
+      "title": "yyyyyyy",
+      "id": 10
+    }
+  ]
+}

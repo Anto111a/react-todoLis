@@ -1,5 +1,7 @@
+//Core
 import React from 'react';
 import PropTypes from 'prop-types';
+//Components
 import Card from 'react-bootstrap/Card';
 
 function Header(props) {

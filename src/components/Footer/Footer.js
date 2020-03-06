@@ -1,4 +1,6 @@
+//Core
 import React from 'react';
+//Components
 import Card from 'react-bootstrap/Card';
 
 function Footer() {

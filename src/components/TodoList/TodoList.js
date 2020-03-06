@@ -1,14 +1,12 @@
 // Core
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// Components
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
-// Components
+import Api from '../../engine/services/api';
 import TodoListItem from '../TodoListItem/TodoListItem';
-
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import Input from '../Input/Input';
 
 function MakeList() {
   const [data, setData] = useState([]);
@@ -17,8 +15,7 @@ function MakeList() {
 
   useEffect(() => {
     setIsLoading(true);
-
-    instance.get('/posts')
+    Api.getRequest()
       .then((res) => {
         setData(res.data);
       })
@@ -39,17 +36,22 @@ function MakeList() {
   return (
     <Card.Body>
       <ListGroup>
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          data.map(item => (
-            <TodoListItem
-              variant="primary"
-              key={item.id}
-              title={item.title}
-            />
-          ))
-        )}
+        <Input setData={setData} data={data} />
+        <ErrorBoundary>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+              data.map(item => (
+                <TodoListItem
+                  variant="primary"
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  setData={setData}
+                />
+              ))
+            )}
+        </ErrorBoundary>
       </ListGroup>
     </Card.Body>
   );
