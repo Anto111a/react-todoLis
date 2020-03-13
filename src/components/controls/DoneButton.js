@@ -1,19 +1,15 @@
 //Core
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
+import cx from 'classnames';
 import Api from '../../engine/services/api';
 //Component
 import Button from 'react-bootstrap/Button';
 
 function DoneButton(props) {
-  const { id, progress, setData } = props;
-  const [doneButtonStyle, setDoneButtonStyle] = useState(progress);
-  const [newProgress, setNewProgress] = useState(progress);
+  const { id, isDone, setData } = props;
 
-  const doneButtonHendler = useCallback(() => {
-    newProgress === 'done' ? setNewProgress('') : setNewProgress('done');
-    setDoneButtonStyle(newProgress);
-    Api.updateProgress(id, newProgress)
-      .then(() => console.log('updeted! new progress=', newProgress))
+  const doneButtonHandler = useCallback(() => {
+    Api.updateProgress(id, !isDone)
       .then(() => Api.getRequest())
       .then((res) => {
         setData(res.data);
@@ -21,13 +17,16 @@ function DoneButton(props) {
       .catch(error => {
         console.log(error);
       });
-  }, [newProgress]);
+  }, [id, isDone, setData]);
 
-  /*   useEffect(() => {
-      setDoneButtonStyle(newProgress);
-    }, [doneButtonStyle,newProgress]); */
   return (
-    <Button variant="dark" onClick={doneButtonHendler} className={doneButtonStyle}>Done!</Button>
+    <Button
+      className={cx({ done: isDone })}
+      variant="dark"
+      onClick={doneButtonHandler}
+    >
+      Done!
+    </Button>
   )
 }
 

@@ -1,6 +1,7 @@
 //Core
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 //Components
 import ListGroup from 'react-bootstrap/ListGroup';
 import DeleteButton from '../controls/DeleteButton';
@@ -10,7 +11,6 @@ import Input from '../Input/Input';
 //Styles
 import './todoListItem.css';
 
-
 function TodoListItem(props) {
   const [collapse, setCollapse] = useState(true);
   const { title, setData, id, progress } = props;
@@ -19,8 +19,8 @@ function TodoListItem(props) {
     return (
       <ListGroup.Item
         variant="info"
-        className={'listItem'}>
-        <p className={progress} >
+        className="listItem">
+        <p className={cx({ done: progress })}>
           You should do: {title}
         </p>
         <div>
@@ -41,8 +41,9 @@ function TodoListItem(props) {
       <DoneButton
         title={title}
         setData={setData}
-        newProgress={progress}
-        id={id} />
+        isDone={progress}
+        id={id}
+      />
       <Input
         label="Update"
         title={title}
@@ -61,6 +62,6 @@ function TodoListItem(props) {
 
 TodoListItem.propTypes = {
   title: PropTypes.string
-}
+};
 
 export default TodoListItem;
