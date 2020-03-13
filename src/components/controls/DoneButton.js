@@ -1,5 +1,5 @@
 //Core
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import Api from '../../engine/services/api';
 //Component
 import Button from 'react-bootstrap/Button';

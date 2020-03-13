@@ -12,15 +12,10 @@ function Input(props) {
   const { setData, label, title, id, collapse, setCollapse, progress } = props;
   const [inputValue, setInputValue] = useState('');
   const onFormSubmit = useCallback((ev) => {
-    console.log("hello");
     ev.preventDefault();
     if (ev.target[0].value.trim()) {
-      console.log("hello");
       const title = ev.target[0].value;
-      console.log(ev.target[0]);
-      console.log(ev.target[1]);
       if (label === "Add") {
-        console.log("hello");
         Api.postData(title, progress)
           .then(() => Api.getRequest())
           .then((res) => {

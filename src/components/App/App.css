@@ -1,0 +1,13 @@
+
+#root>div>div {
+  height: 100vh;
+  
+}
+.todoList{
+
+  overflow-x: auto; 
+}
+
+.card-footer{
+  margin-top: auto;
+}

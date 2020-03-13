@@ -1,5 +1,5 @@
 //Core
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //Components
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -44,7 +44,6 @@ function TodoListItem(props) {
         newProgress={progress}
         id={id} />
       <Input
-        className={progress}
         label="Update"
         title={title}
         id={id}
