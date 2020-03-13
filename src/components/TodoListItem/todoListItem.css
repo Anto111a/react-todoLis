@@ -1,0 +1,32 @@
+.done {
+  text-decoration: line-through;
+}
+
+.list-group-item>.done:hover {
+  text-decoration: line-through;
+
+}
+
+.list-group>.listItem {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.list-group>.list-group-item-warning {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item-warning>form {
+  display: inline-flex;
+  margin: 0 30px;
+}
+
+.list-group-item-info>div {
+  margin-left: auto;
+}
+
+.list-group-item>div>.btn-primary {
+  margin-right: 5px;
+}

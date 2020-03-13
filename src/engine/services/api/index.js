@@ -17,17 +17,31 @@ class Api {
     return this.http.get('/posts');
   }
 
-  postData(data) {
-    return this.http.post('/posts', { "title": data });
+  postData(data, progress) {
+    return this.http.post('/posts', { "title": data, "progress": progress });
   }
 
   deleteData(data) {
-    //console.log(data);
     return this.http.delete('/posts/' + data)
       .catch(error => {
         console.log(error);
       });
   }
+
+  updateData(id, title) {
+    return this.http.patch('/posts/' + id, { title })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  updateProgress(id, progress) {
+    return this.http.patch('/posts/' + id, { progress })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
 }
 
 export default Api.getInstance();

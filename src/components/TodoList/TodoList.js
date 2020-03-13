@@ -36,7 +36,10 @@ function MakeList() {
   return (
     <Card.Body>
       <ListGroup>
-        <Input setData={setData} data={data} />
+        <Input
+          setData={setData}
+          progress=""
+          label="Add" />
         <ErrorBoundary>
           {isLoading ? (
             <div>Loading...</div>
@@ -47,6 +50,7 @@ function MakeList() {
                   key={item.id}
                   id={item.id}
                   title={item.title}
+                  progress={item.progress}
                   setData={setData}
                 />
               ))

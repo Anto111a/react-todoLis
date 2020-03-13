@@ -1,8 +1,9 @@
 {
   "posts": [
     {
-      "title": "sdds",
-      "id": 6
+      "title": "sddsuuu",
+      "id": 6,
+      "progress": "done"
     },
     {
       "title": "lkmk",
@@ -13,11 +14,13 @@
       "id": 8
     },
     {
-      "title": "dddddd",
+      "title": "re",
+      "progress": "",
       "id": 9
     },
     {
-      "title": "yyyyyyy",
+      "title": "ararar",
+      "progress": "",
       "id": 10
     }
   ]

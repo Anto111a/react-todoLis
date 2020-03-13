@@ -1,20 +1,17 @@
 //Core
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 //Component
 import Button from 'react-bootstrap/Button';
 
 
 function EditButton(props) {
-  const { collapse, setCollapse } = props;
-  console.log(collapse);
+  const { collapse, setCollapse, label } = props;
   const editButtonHandler = useCallback(() => {
-    console.log(collapse);
     setCollapse(!collapse);
-    console.log(collapse);
-  }, []);
+  }, [setCollapse, collapse]);
 
   return (
-    <Button onClick={editButtonHandler} variant="primary"><span>&#9998;</span></Button>
+    <Button onClick={editButtonHandler} variant="primary"><span>{label}</span></Button>
   )
 }
 
