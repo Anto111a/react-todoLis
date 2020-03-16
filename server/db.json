@@ -2,12 +2,12 @@
   "posts": [
     {
       "title": "фывфы",
-      "progress": "",
+      "progress": false,
       "id": 7
     },
     {
       "title": "фывфыв",
-      "progress": "",
+      "progress": false,
       "id": 8
     },
     {

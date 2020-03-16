@@ -9,12 +9,13 @@ import Footer from '../Footer/Footer';
 
 function Main() {
   return (
-    <Col md={{ span: 4, offset: 4 }}>
+    <Col md={12}>
       <Card
         border="primary"
         className="text-center"
         bg="secondary"
-        text="white">
+        text="white"
+      >
         <Header name="Anton's " />
         <TodoList />
         <Footer />
