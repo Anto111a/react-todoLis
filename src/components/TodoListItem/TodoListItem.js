@@ -20,6 +20,12 @@ function TodoListItem(props) {
       <ListGroup.Item
         variant="info"
         className="listItem">
+          <DoneButton
+        title={title}
+        setData={setData}
+        isDone={progress}
+        id={id}
+      />
         <p className={cx({ done: progress })}>
           You should do: {title}
         </p>
@@ -44,6 +50,10 @@ function TodoListItem(props) {
         isDone={progress}
         id={id}
       />
+      <div>
+      <p className={cx({ done: progress })}>
+          You should do:
+        </p>
       <Input
         label="Update"
         title={title}
@@ -51,10 +61,11 @@ function TodoListItem(props) {
         setData={setData}
         setCollapse={setCollapse}
         collapse={collapse} />
+        </div>
       <EditButton
         setCollapse={setCollapse}
         collapse={collapse}
-        label="return"
+        label="Return"
       />
     </ListGroup.Item>
   )

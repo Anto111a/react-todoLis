@@ -6,3 +6,6 @@
   margin: 10px auto;
 }
 
+.list-group form>button {
+  margin-left: 5px;
+}

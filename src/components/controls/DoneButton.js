@@ -22,7 +22,7 @@ function DoneButton(props) {
   return (
     <Button
       className={cx({ done: isDone })}
-      variant="dark"
+      variant="info"
       onClick={doneButtonHandler}
     >
       Done!

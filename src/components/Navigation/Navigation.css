@@ -1,0 +1,13 @@
+.nav a{
+  color: black;
+}
+
+
+.list-group .card-header-pills {
+  background: rgb(172, 197, 219);
+  margin-bottom: 15px;
+  justify-content: center;
+  width: fit-content;
+  align-self: center;
+  border-radius: 5px;
+}

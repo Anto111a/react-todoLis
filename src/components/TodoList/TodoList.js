@@ -1,14 +1,27 @@
 // Core
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Lazy, Suspense } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink,
+  Redirect,
+  useParams,
+  withRouter,
+} from 'react-router-dom';
 // Components
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Api from '../../engine/services/api';
-import TodoListItem from '../TodoListItem/TodoListItem';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Input from '../Input/Input';
+import TodoListBody from '../TodoListBody/TodoListBody';
+import Navigation from '../Navigation/Navigation'
+//Routes 
+import { routes } from '../../engine/config/routes';
 
-function MakeList() {
+function TodoList() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -34,38 +47,50 @@ function MakeList() {
   }
 
   return (
-    <Card.Body>
-      <ListGroup>
-        <Input
-          setData={setData}
-          progress=""
-          label="Add" />
-        <ErrorBoundary>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-              data.map(item => (
-                <TodoListItem
-                  variant="primary"
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  progress={item.progress}
-                  setData={setData}
-                />
-              ))
-            )}
-        </ErrorBoundary>
-      </ListGroup>
-    </Card.Body>
-  );
-}
+    <>
+      <div className="todoList">
+        <Card.Body>
+          <ListGroup>
+            <Input
+              setData={setData}
+              progress={false}
+              label="Add"
+            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Router>
+                <>
+                  <Navigation />
+                  <Switch>
+                    <Route exact path={routes.all}>
+                      <TodoListBody
+                        category="all"
+                        data={data}
+                        setData={setData}
+                      />
+                    </Route>
+                    <Route exact path={routes.inprogress}>
+                      <TodoListBody
+                        category="inprogres"
+                        data={data}
+                        setData={setData}
+                      />
+                    </Route>
+                    <Route exact path={routes.done}>
+                      <TodoListBody
+                        category="done"
+                        data={data}
+                        setData={setData}
+                      />
+                    </Route>
+                  </Switch>
+                </>
+              </Router>
+            </Suspense>
+          </ListGroup>
+        </Card.Body>
+      </div>
 
-function TodoList() {
-  return (
-    <div className="todoList">
-      <MakeList />
-    </div>
+    </>
   );
 }
 

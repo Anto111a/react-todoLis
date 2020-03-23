@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer';
 
 function Main() {
   return (
-    <Col md={12}>
+    <Col md={{ span: 8, offset: 2 }}>
       <Card
         border="primary"
         className="text-center"

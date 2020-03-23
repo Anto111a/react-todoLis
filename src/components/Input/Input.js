@@ -1,5 +1,5 @@
 //Core
-import React, { useCallback, useState, useEffect, } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import Api from '../../engine/services/api';
 //Components 
 import Form from 'react-bootstrap/Form';
@@ -11,6 +11,7 @@ import './input.css';
 function Input(props) {
   const { setData, label, title, id, collapse, setCollapse, progress } = props;
   const [inputValue, setInputValue] = useState('');
+  const inputRef = useRef();
   const onFormSubmit = useCallback((ev) => {
     ev.preventDefault();
     if (ev.target[0].value.trim()) {
@@ -43,21 +44,27 @@ function Input(props) {
 
   useEffect(() => {
     setInputValue(title);
-  }, [title]);
+    if(label === "Update") {
+      inputRef.current.focus();
+    }
+  }, [title, label]);
+
   const handleInputChange = useCallback((ev) => {
     const value = ev.target.value;
     setInputValue(value);
+    console.log('callback');
   }, []);
 
   return (
     <Form onSubmit={onFormSubmit}>
       <Form.Control
+        ref={inputRef}
         type="text"
         name="name"
         value={inputValue}
         onChange={handleInputChange} />
       <Button
-        variant="primary"
+        variant="success"
         type="submit">
         {label}
       </Button>
